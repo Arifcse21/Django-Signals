@@ -5,3 +5,4 @@ from .passwd_validators import AUTH_PASSWORD_VALIDATORS
 from .templates import TEMPLATES
 from .statics import *
 from .i18n import *
+from .SMTP_server import *
