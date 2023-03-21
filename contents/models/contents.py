@@ -1,5 +1,8 @@
 from django.db import models
 from django.conf import settings
+from django.db.models.signals import pre_save, post_save
+from django.dispatch import receiver
+from contents.utils import SendEmail
 
 STATUS = (
     ('pending', 'pending'),
@@ -31,4 +34,16 @@ class Content(models.Model):
     def __repr__(self):
         return self.id
 
+
+@receiver(post_save, sender=Content)
+def create_content(sender, instance, created, **kwargs):
+    if created:
+        se = SendEmail(
+            signal="pending",
+            subject="Content is waiting to be reviewed",
+            msg=f"Your content with id: {instance.id} is waiting to be review. Have patience",
+            to=instance.user.email
+        ).send_email()
+
+        print("send email signal status: ", se)
 
