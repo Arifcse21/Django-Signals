@@ -1,3 +1,3 @@
 from .create_content_model_signal import create_content_signal
-
+from .review_content_model_signal import review_content_signal
 

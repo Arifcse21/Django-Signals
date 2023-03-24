@@ -1,8 +1,6 @@
 from django.db import models
 from django.conf import settings
-from django.db.models.signals import pre_save, post_save
-from django.dispatch import receiver
-from contents.utils import SendEmail
+
 
 STATUS = (
     ('pending', 'pending'),
@@ -28,7 +26,7 @@ class Content(models.Model):
     )
     content = models.TextField(max_length=2000, null=True, blank=True)
     status = models.CharField(choices=STATUS, default='pending', max_length=100)
-    notes = models.TextField(max_length=1000, null=True, blank=True)
+    review_notes = models.TextField(max_length=1000, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
