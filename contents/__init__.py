@@ -1,1 +1,1 @@
-default_app_config = "contents.apps.MyAppConfig"
+default_app_config = "contents.apps.ContentsConfig"

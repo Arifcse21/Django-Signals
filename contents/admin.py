@@ -28,7 +28,7 @@ class ContentAdmin(admin.ModelAdmin):
         "user",
         "content",
         "status",
-        "notes",
+        "review_notes",
         "created_at",
         "modified_at"
     ]
